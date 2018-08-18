@@ -1,0 +1,8 @@
+{% extends 'core/base.html'%}
+{% block content %}
+        <h2>Votacao</h2>
+        {% for proposta in propostas %}
+            <li>{{ proposta.proposta }}</li>
+        {% endfor %}
+        <a href='{% url "votacao:votar" %}'>Votar</a>
+{% endblock %}

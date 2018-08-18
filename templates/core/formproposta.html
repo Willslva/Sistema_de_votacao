@@ -1,0 +1,26 @@
+{% extends 'core/base.html'%}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <section id="contact">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Proposta</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label>Proposta</label>
+                  <input class="form-control" id="proposta" name="proposta" type="text" placeholder="Proposta" required="required" data-validation-required-message="Please enter your proposal.">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-xl"value="Save"/>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</form>
+{% endblock %}
