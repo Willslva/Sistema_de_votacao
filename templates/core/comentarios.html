@@ -2,20 +2,20 @@
 {% block content %}
 	<section id="contact">
       <div class="container">
-        <h2 class="text-center text-uppercase text-secondary mb-0">Votação</h2>
+        <h2 class="text-center text-uppercase text-secondary mb-0">Comentários</h2>
         <hr class="star-dark mb-5">
         <div class="row">
-        {% for object in propostas %}
+        {% for object in comentarios %}
           <div class="col-lg-8 mx-auto">
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                 	Nome da lei:
-                  <input class="form-control" value="{{ object.nome }}">
+                 	Comentario:
+                  <input class="form-control" value="{{ object.comentario }}">
                 </div>
               </div>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                	Descrição da lei:
+                	Nome da proposta:
                   <input class="form-control" value="{{ object.proposta }}">
                   <p class="help-block text-danger"></p>
                 </div>
@@ -23,9 +23,6 @@
           </div>
         {% endfor %}
         </div>
-      </div>
-      <div class="form-group">
-        	<a class="btn btn-primary btn-xl" href='{% url "votacao:votar" %}'>Votar</a>
       </div>
     </section>
         

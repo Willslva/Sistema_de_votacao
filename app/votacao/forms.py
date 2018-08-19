@@ -25,8 +25,9 @@ class UUIDUserForm(forms.ModelForm):
 
 #Proposta
 class PropostaForm(forms.ModelForm):
+    nome = forms.TextField(widgets=forms.TextField())
     proposta = forms.TextField(widgets=forms.TextField())
-    created_time = forms.DateTimeField(widgets=forms.HiddenField())
+    created_time = forms.DateTimeField(widgets=forms.HiddenField(),initial=datetime.now())
 
     def save(self, commit=True):
         prop = super(PropostaForm, self).save(commit=False)
@@ -35,12 +36,12 @@ class PropostaForm(forms.ModelForm):
         return prop
     class Meta:
         model = Proposta
-        fields = ('proposta','created_time')
+        fields = ('nome','proposta','created_time')
 
 #Votacao
 class VotacaoForm(forms.ModelForm):
+    usuario = forms.TextField(widgets=forms.TextField())
     proposal = forms.ForeignKey(widgets=forms.HiddenField())
-    comment = forms.TextField(widgets=forms.TextField())
     status = forms.IntegerField(widgets=forms.IntegerField(), initial=1)
     def save(self, commit=True):
         votar = super(VotacaoForm, self).save(commit=False)
@@ -50,4 +51,4 @@ class VotacaoForm(forms.ModelForm):
     class Meta:
         model = Votacao
 
-        fields = ('proposal', 'comment', 'status')
+        fields = ('proposal', 'status')

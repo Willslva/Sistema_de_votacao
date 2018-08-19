@@ -7,13 +7,16 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 from . import models
 
-class Home(TemplateView):
+class Index(TemplateView):
     template_name = 'base.html'
+
+class Home(TemplateView):
+    template_name = 'home.html'
 
 class UserCreateView(CreateView):
 	model = models.UUIDUser
 	template_name = 'form.html'
-	success_url = reverse_lazy('votacao:votacao')
+	success_url = reverse_lazy('votacao:home')
 	fields = ['name', 'password', 'email', 'cpf']
 	def form_valid(self, form):
 		obj = form.save(commit=False)
@@ -25,7 +28,7 @@ class Proposta(CreateView):
     model = models.Proposta
     template_name = 'core/formproposta.html'
     success_url = reverse_lazy('votacao:home')
-    fields = ['proposta']
+    fields = ['nome','proposta']
 
     def form_valid(self, form):
          obj = form.save(commit=False)
@@ -45,7 +48,7 @@ class VotarCreateView(CreateView):
     model = models.Votacao
     template_name = 'core/aceitar.html'
     success_url = reverse_lazy('votacao:home')
-    fields = ['proposal', 'comment', 'status']
+    fields = ['proposal', 'status']
 
   
     def form_valid(self, form):
@@ -53,6 +56,39 @@ class VotarCreateView(CreateView):
         obj.user = self.request.user
         obj.save()
         return super(VotarCreateView, self).form_valid(form)
+
+class Comentarios(ListView):
+    model = models.Comentario
+    template_name = 'core/listcomentario.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['propostas'] = models.Proposta.objects.all()
+        return super(Comentarios, self).get_context_data(**kwargs)
+
+class ComentarioCreateView(CreateView):
+    model = models.Comentario
+    template_name = 'core/comentar.html'
+    success_url = reverse_lazy('votacao:home')
+    fields = ['comentario', 'proposta']
+
+  
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.user = self.request.user
+        obj.save()
+        return super(ComentarioCreateView, self).form_valid(form)
+
+class ListComentarios(ListView):
+    model = models.Comentario
+    template_name = 'core/comentarios.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['comentarios'] = models.Comentario.objects.all()
+        return super(ListComentarios, self).get_context_data(**kwargs)
+
+    
+
+
 
 
 

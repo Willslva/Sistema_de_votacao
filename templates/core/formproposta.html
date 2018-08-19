@@ -1,4 +1,4 @@
-{% extends 'core/base.html'%}
+{% extends 'core/home.html'%}
 {% block content %}
 <form method="post">
   {% csrf_token %}
@@ -10,8 +10,15 @@
           <div class="col-lg-8 mx-auto">
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label>Nome da Proposta</label>
+                  <input class="form-control" id="nome" name="nome" type="text" placeholder="Nome da lei" required="required" data-validation-required-message="Please enter your proposal.">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Proposta</label>
-                  <input class="form-control" id="proposta" name="proposta" type="text" placeholder="Proposta" required="required" data-validation-required-message="Please enter your proposal.">
+                  <input class="form-control" id="proposta" name="proposta" type="text" placeholder="Descrição da lei" required="required" data-validation-required-message="Please enter your proposal.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
