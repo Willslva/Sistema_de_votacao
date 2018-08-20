@@ -14,7 +14,7 @@ app_name = 'votacao'
 urlpatterns = [
 
     #Index
-     path('index/', core.Index.as_view(template_name='core/base.html'), name='index'),
+     path('', core.Index.as_view(template_name='core/base.html'), name='index'),
 
     #home
      path('home/', core.Home.as_view(template_name='core/home.html'), name='home'),
@@ -39,5 +39,7 @@ urlpatterns = [
 
     #Lista de comentarios
      path('listcomentarios/', core.ListComentarios.as_view(), name='listcomentarios'),
+   
+
 ]
 

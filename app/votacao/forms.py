@@ -18,10 +18,16 @@ class UUIDUserForm(forms.ModelForm):
 
     class Meta:
         model = UUIDUser
-        fields = ('id_cpf', 'id_name', 'id_email', 'id_password')
+        fields = ('username', 'first_name', 'email', 'password')
+        labels = {
+            'username': 'Login',
+            'first_name': 'Nome completo',
+            'email': 'Email',
+        }
         widgets={
             'password': forms.PasswordInput()
 }
+
 
 #Proposta
 class PropostaForm(forms.ModelForm):

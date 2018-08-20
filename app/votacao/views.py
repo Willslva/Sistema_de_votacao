@@ -17,7 +17,7 @@ class UserCreateView(CreateView):
 	model = models.UUIDUser
 	template_name = 'form.html'
 	success_url = reverse_lazy('votacao:home')
-	fields = ['name', 'password', 'email', 'cpf']
+	fields = ['username','first_name', 'last_name', 'password', 'email']
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.user = self.request.user

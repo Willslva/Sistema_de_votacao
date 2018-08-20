@@ -1,4 +1,4 @@
-{% extends 'core/home.html'%}
+{% extends 'core/base.html'%}
 
 {% block content %}
   <form method="post"  >
@@ -11,15 +11,22 @@
           <div class="col-lg-8 mx-auto">
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Name</label>
-                  <input class="form-control" id="name" name="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name.">
+                  <label>O nome de usuário</label>
+                  <input class="form-control" id="username" name="username" type="text" placeholder="O nome de usuário" required="required" data-validation-required-message="Please enter your name.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Email Address</label>
-                  <input class="form-control" id="email" name="email" type="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address.">
+                  <label>Primeiro nome</label>
+                  <input class="form-control" id="first_name" name="first_name" type="text" placeholder="Primeiro nome" required="required" data-validation-required-message="Please enter your name.">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label>Último nome</label>
+                  <input class="form-control" id="last_name" name="last_name" type="text" placeholder="Último nome" required="required" data-validation-required-message="Please enter your name.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -32,8 +39,8 @@
               </div>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>CPF</label>
-                  <textarea class="form-control" id="cpf" type="number" name="cpf" rows="11" placeholder="CPF" required="required" data-validation-required-message="Please enter a CPF."></textarea>
+                  <label>Email Address</label>
+                  <input class="form-control" id="email" name="email" type="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>

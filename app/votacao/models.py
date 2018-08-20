@@ -31,17 +31,6 @@ class UUIDUser(AbstractUser):
     groups = models.ManyToManyField(Group, blank=True, related_name="uuiduser_set", related_query_name="user")
     user_permissions = models.ManyToManyField(Permission, blank=True, related_name="uuiduser_set", related_query_name="user")
 
-    # core
-    name = models.CharField('nome',max_length=100)
-    password = models.CharField('senha',max_length=100)
-    email = models.EmailField(max_length=100)
-    cpf = models.IntegerField(verbose_name="CPF")
-
-
-    
-    def __str__(self):
-        return self.first_name
-
     class Meta:
         verbose_name = 'usuário'
         verbose_name_plural = 'usuários'
