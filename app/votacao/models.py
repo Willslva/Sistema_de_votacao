@@ -8,7 +8,11 @@ import uuid
 from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.models import AbstractUser, Group, Permission
+from datetime import datetime, timedelta
 from django.db import models
+
+now = datetime.now()
+other_time = now + timedelta(hours=1)
 
 
 # CreateUpdateModel
@@ -36,9 +40,10 @@ class UUIDUser(AbstractUser):
         verbose_name_plural = 'usuários'
 
 class Proposta(models.Model):
+    id_user = models.ForeignKey(UUIDUser,on_delete=models.CASCADE,verbose_name='Usuário')
     nome = models.CharField(max_length=255, verbose_name='Lei')
     proposta = models.TextField(verbose_name='proposta')
-    created_time = models.DateTimeField('criado em', auto_now_add=True)
+    tempo_final = models.TimeField(verbose_name='Tempo da proposta', default=other_time)
 
     def __str__(self):
         return self.nome
@@ -55,7 +60,6 @@ class Votacao(models.Model):
             )
     proposal = models.ForeignKey(Proposta, on_delete=models.CASCADE, verbose_name='Nome da proposta')
     status = models.IntegerField(choices=STATUS)
-
 
     class Meta:
         verbose_name = 'Votação'

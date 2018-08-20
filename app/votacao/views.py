@@ -32,7 +32,7 @@ class Proposta(CreateView):
 
     def form_valid(self, form):
          obj = form.save(commit=False)
-         obj.user = self.request.user
+         obj.id_user = self.request.user
          obj.save()
          return super(Proposta, self).form_valid(form)
 
