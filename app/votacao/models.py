@@ -43,7 +43,7 @@ class Proposta(models.Model):
     id_user = models.ForeignKey(UUIDUser,on_delete=models.CASCADE,verbose_name='Usuário')
     nome = models.CharField(max_length=255, verbose_name='Lei')
     proposta = models.TextField(verbose_name='proposta')
-    tempo_final = models.TimeField(verbose_name='Tempo da proposta', default=other_time)
+    tempo_final = models.DateTimeField(verbose_name='Tempo da proposta', default=other_time)
 
     def __str__(self):
         return self.nome
@@ -58,6 +58,7 @@ class Votacao(models.Model):
     (0, 'Negar'),
     (1, 'Aceitar')
             )
+    usuario = models.ForeignKey(UUIDUser,on_delete=models.CASCADE,verbose_name='Usuário')
     proposal = models.ForeignKey(Proposta, on_delete=models.CASCADE, verbose_name='Nome da proposta')
     status = models.IntegerField(choices=STATUS)
 
